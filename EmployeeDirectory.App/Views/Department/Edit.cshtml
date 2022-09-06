@@ -1,0 +1,27 @@
+﻿@model ED.Services.Employees.Contract.Models.Department
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<h2>Изменение отдела</h2>
+ 
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Отдел "@Model.Name"</legend>
+ 
+        @Html.HiddenFor(model => model.Id)
+ 
+        <p> Новое название <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться к списку отделов", "Index")
+</div>

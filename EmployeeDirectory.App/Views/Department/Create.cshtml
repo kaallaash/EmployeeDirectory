@@ -1,0 +1,34 @@
+﻿@model ED.Services.Employees.Contract.Models.Department
+ 
+@{
+    ViewBag.Title = "Добавление отдела";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <link rel="stylesheet" href="~/css/employeedirectory/style.css" />
+
+@if (ViewBag.Message != null)
+{
+    <div class="message">@ViewBag.Message</div>
+}
+
+<h2>Добавление отдела</h2>
+ 
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Отдел</legend>
+ 
+        <p>
+            Название отдела<br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+ 
+        <p>
+            <input type="submit" value="Добавить отдел" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку отделов", "Index")
+</div>

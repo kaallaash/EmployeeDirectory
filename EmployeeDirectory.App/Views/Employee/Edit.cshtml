@@ -1,0 +1,51 @@
+﻿@model EmployeeDirectory.App.ViewModels.CreateEmployeeViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/employee/style.css" />
+ 
+<h2>Редактирование сотрудника</h2>
+ 
+<form method="post" action="/Employee/Edit" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Сотрудник</legend>
+ 
+        @Html.HiddenFor(model => model.Id)
+ 
+        <p> Имя <br />
+            @Html.EditorFor(model => model.FirstName)
+        </p>
+ 
+        <p> Фамилия <br />
+        @Html.EditorFor(model => model.LastName)
+        </p>
+ 
+        <p> Отчество  <br />
+            @Html.EditorFor(model => model.Patronymic)
+        </p>
+
+        <p>Отдел <br />
+            @Html.DropDownListFor(model => model.DepartmentName, ViewBag.Departments as SelectList)
+        </p>
+
+        <p> Телефон  <br />
+            @Html.EditorFor(model => model.Phone)
+        </p>
+
+        <img class="avatar" src="@Url.Content(Model.PhotoLink)"/>
+        <p>
+            Загрузить новое фото  <br />
+            <input name="Photo" type="file" class="form-control" />
+        </p>
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Вернуться к списку сотрудников", "Index")
+</div>

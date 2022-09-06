@@ -1,0 +1,56 @@
+﻿@model EmployeeDirectory.App.ViewModels.CreateEmployeeViewModel
+ 
+@{
+    ViewBag.Title = "Добавление сотрудника";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/employeedirectory/style.css" />
+
+@if (ViewBag.Message != null)
+{
+    <div class="message">@ViewBag.Message</div>
+}
+ 
+<h2>Добавление сотрудника</h2>
+
+<form method="post" action="/Employee/Create" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Сотрудник</legend>
+ 
+        <p>
+            Имя <br />
+            @Html.EditorFor(model => model.FirstName)
+        </p>
+ 
+        <p>
+            Фамилия <br />
+            @Html.EditorFor(model => model.LastName)
+        </p>
+ 
+        <p>
+            Отчество  <br />
+            @Html.EditorFor(model => model.Patronymic)
+        </p>
+        <p>
+            Отдел <br />
+            @Html.DropDownListFor(model => model.DepartmentName, ViewBag.Departments as SelectList)
+        </p>
+        <p>
+            Телефон  <br />
+            @Html.EditorFor(model => model.Phone)
+        </p>
+        <p>
+            Фото  <br />
+            <input name="Photo" type="file" class="form-control" />
+        </p>
+        <p>
+            <input type="submit" value="Добавить сотрудника" />
+        </p>
+
+    </fieldset>
+</form>
+<div>
+    @Html.ActionLink("К списку сотрудников", "Index")
+</div>
+

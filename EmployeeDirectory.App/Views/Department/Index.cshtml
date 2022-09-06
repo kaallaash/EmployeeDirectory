@@ -1,0 +1,32 @@
+﻿@model List<ED.Services.Employees.Contract.Models.Department>
+@{
+    ViewBag.Title = "Список Отделов";
+}
+ 
+<div class="text-center">
+    <h2 class="display-4">Список отделов</h2>
+</div>
+
+<p>
+    @Html.ActionLink("Добавить Отдел", "Create")
+</p>
+<table>
+    <tr>
+        <th>Название отдела</th>
+    </tr>
+ 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name) 
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Список сотрудников", "Index", "Employee")
+</p>
